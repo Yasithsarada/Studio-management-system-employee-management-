@@ -35,7 +35,13 @@ class EmployeeScreen extends StatelessWidget {
             alignment: Alignment.center,
             width: 328,
             height: 40,
-            child: const Column(children: [Text("Capture Dreams")]),
+            child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("Capture Dreams"),
+                  Text("We're not just a team, we're a family"),
+                ]),
 
             // decoration: BoxDecoration(
             //   shape: BoxShape.circle,
