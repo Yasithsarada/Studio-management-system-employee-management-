@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studio_management_student/screens/Employee_login_screen.dart';
 import 'package:studio_management_student/screens/employee_page.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromRGBO(193, 173, 254, 1)),
         useMaterial3: true,
       ),
-      home: const EmployeeScreen(),
+      home: const Scaffold(body: LoginScreen()),
     );
   }
 }

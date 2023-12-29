@@ -28,6 +28,8 @@ class EmployeeScreen extends StatelessWidget {
           height: 304.07,
           decoration: const BoxDecoration(
               shape: BoxShape.circle, color: Color.fromRGBO(110, 140, 217, 1)),
+          child: Image.asset("assets/images/logo 1.png",
+              alignment: Alignment.center),
         ),
         Expanded(
           child: Container(
@@ -35,12 +37,34 @@ class EmployeeScreen extends StatelessWidget {
             alignment: Alignment.center,
             width: 328,
             height: 40,
-            child: const Column(
+            child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Capture Dreams"),
-                  Text("We're not just a team, we're a family"),
+                  const Text(
+                    "Capture Dreams",
+                    style: TextStyle(fontSize: 36, color: Colors.white),
+                  ),
+                  const SizedBox(
+                    height: 22,
+                  ),
+                  const Text(
+                    "We're not just a team",
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                  // SizedBox(height: 16,),
+                  const Text(
+                    "we're a family",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Next"),
+                    style: ButtonStyle(),
+                  ),
                 ]),
 
             // decoration: BoxDecoration(
