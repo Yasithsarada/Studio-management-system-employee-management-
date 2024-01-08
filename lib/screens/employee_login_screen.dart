@@ -32,7 +32,17 @@ class _LoginScreenState extends State<LoginScreen> {
             style: TextStyle(fontSize: 20),
           ),
         ),
-        // TextField(style: Border.all(color: Colors.black12),)
+        Container(
+            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 20)),
+        Padding(padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20)),
+        TextField(
+          maxLength: 50,
+          decoration: const InputDecoration(
+            label: Text(
+              "Tittle",
+            ),
+          ),
+        ),
       ],
     );
   }
