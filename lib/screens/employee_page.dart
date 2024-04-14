@@ -7,7 +7,7 @@ class EmployeeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     print(MediaQuery.of(context).size.width);
     print(MediaQuery.of(context).size.height);
-//
+
     return Container(
       width: double.infinity,
       height: double.infinity,
