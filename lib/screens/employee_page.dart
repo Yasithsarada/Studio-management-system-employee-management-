@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:studio_management_student/screens/employee_login_screen.dart';
 
 class EmployeeScreen extends StatelessWidget {
   const EmployeeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.width);
-    print(MediaQuery.of(context).size.height);
+    // print(MediaQuery.of(context).size.width);
+    // print(MediaQuery.of(context).size.height);
 
     return Container(
       width: double.infinity,
@@ -61,9 +62,13 @@ class EmployeeScreen extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()),
+                    ),
+                    style: const ButtonStyle(),
                     child: const Text("Next"),
-                    style: ButtonStyle(),
                   ), //
                 ]),
 

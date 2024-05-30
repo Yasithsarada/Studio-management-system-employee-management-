@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class LoginInputFields extends StatelessWidget {
   final String hintText;
   final Color fillColor;
-  LoginInputFields(this.hintText, this.fillColor, {super.key});
+  const LoginInputFields(this.hintText, this.fillColor, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +15,13 @@ class LoginInputFields extends StatelessWidget {
           decoration: InputDecoration(
             filled: true,
             fillColor: fillColor,
-            border: OutlineInputBorder(
+            border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
                 borderSide: BorderSide.none),
             // hintText: hintText,
             label: Text(
               hintText,
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
           ),
         ));
