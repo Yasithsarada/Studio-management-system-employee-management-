@@ -45,10 +45,11 @@ class _ExpandableTileState extends State<ExpandableTile> {
             print(_isExpanded);
           },
           collapsedBackgroundColor:
-              !_isExpanded ? const Color(0xff251f71) : Colors.transparent,
+              // !_isExpanded ? const Color(0xff251f71) : Colors.amber,
+              const Color(0xff251f71),
           // tilePadding: EdgeInsets.all(0),
-          backgroundColor:
-              _isExpanded ? Colors.transparent : const Color(0xff251f71),
+          backgroundColor: Colors.transparent,
+          // _isExpanded ? Colors.transparent : const Color(0xff251f71),
           // tilePadding: EdgeInsetsGeometry,
           trailing: Icon(
             Icons.keyboard_arrow_right_sharp,
@@ -75,20 +76,34 @@ class _ExpandableTileState extends State<ExpandableTile> {
             ],
           ),
           // ),
-          children: widget.items
-              .map((item) => Column(
-                    children: [
-                      ListTileComponent(
-                        title: item['task']['taskName'].toString(),
-                        icon: Icons.add_task_outlined,
-                        subTitle: "ggggggggggg",
-                      ),
-                      SizedBox(
-                        height: 15,
-                      )
-                    ],
-                  ))
-              .toList()
+          children: [
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              itemCount: widget.items.length,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTileComponent(
+                  title: widget.items[index]['task']['taskName'].toString(),
+                  icon: Icons.add_task_outlined,
+                  subTitle: "ggggggggggg",
+                ),
+              ),
+            ),
+          ]
+          // widget.items
+          //     .map(
+          //       (item) => Padding(
+          //         padding: const EdgeInsets.all(8.0),
+          //         child: ListTileComponent(
+          //           title: item['task']['taskName'].toString(),
+          //           icon: Icons.add_task_outlined,
+          //           subTitle: "ggggggggggg",
+          //         ),
+          //       ),
+          //     )
+          //     .toList()
           // Container(
           //       margin: const EdgeInsets.symmetric(vertical: 10),
           //       alignment: Alignment.centerLeft,

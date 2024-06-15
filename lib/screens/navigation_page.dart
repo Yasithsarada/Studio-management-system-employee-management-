@@ -1,7 +1,11 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-import 'package:studio_management_student/components/bottom_nav_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:studio_management_student/components/response_handler.dart';
+import 'package:studio_management_student/global_content.dart';
 import 'package:studio_management_student/screens/home_screem.dart';
+
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,6 +23,24 @@ class _HomePageState extends State<HomePage> {
       print("active index value : $_activeIndex");
     });
   }
+  
+  Future<void> getEmployeeDetails(int emplyId) async {
+    final url = Uri.http(uri, "/employeeManager/getEmployeeByid/$emplyId");
+    try {
+      var response = await http.get(url);
+      httpresponseHandler(
+          context: context,
+          response: response,
+          onSuccess: () {
+            final empDetails = jsonDecode(response.body)['empName'];
+            print("emp details: $empDetails");
+          });
+    } catch (e) {
+      print("Error : $e");
+    }
+    ;
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +56,7 @@ class _HomePageState extends State<HomePage> {
     }
 
     return Scaffold(
-      // appBar: AppBar(),
+      appBar: AppBar(title: Text("Welcome"),),
       body: SafeArea(
         top: true,
         minimum: const EdgeInsets.fromLTRB(0, 40, 0, 0),
@@ -46,37 +68,48 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        // elevation: 30,
+        // selectedIconTheme: IconThemeData(size: 35, color: Colors.pink),
+        unselectedFontSize: 12,
+        selectedFontSize: 14,
+        showUnselectedLabels: true,
+        // fixedColor: Colors.greenAccent,
+        unselectedItemColor: Colors.white60,
+        // unselectedIconTheme: IconThemeData(color: Colors.white60, size: 20),
+        // selectedIconTheme: IconThemeData(color: Colors.black, size: 30),
         onTap: changeActiveIndex,
         currentIndex: _activeIndex,
-        selectedItemColor: Colors.black,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xff251f71), // Set background color here
+        // selectedItemColor: Colors.black,
+        type: BottomNavigationBarType.shifting,
+        backgroundColor: const Color(0xff251f71),
+        // Set background color here
 
         items: <BottomNavigationBarItem>[
           const BottomNavigationBarItem(
-            label: "",
+            label: "Home",
             icon: Icon(
               color: Colors.white,
               size: 30.0,
               Icons.home_filled,
             ),
+            backgroundColor: const Color(0xff251f71),
           ),
           const BottomNavigationBarItem(
-            label: "",
-            icon: Icon(
-              color: Colors.white,
-              size: 30.0,
-              Icons.work,
-            ),
-          ),
+              label: "Salary",
+              icon: Icon(
+                color: Colors.white,
+                size: 30.0,
+                Icons.work,
+              ),
+              backgroundColor: const Color(0xff251f71)),
           const BottomNavigationBarItem(
-            label: "",
-            icon: Icon(
-              color: Colors.white,
-              size: 30,
-              Icons.calendar_month,
-            ),
-          ),
+              label: "Calender",
+              icon: Icon(
+                color: Colors.white,
+                size: 30,
+                Icons.calendar_month,
+              ),
+              backgroundColor: const Color(0xff251f71)),
           // BottomNavigationBarItem(
           //   label: "",
           //   icon: Icon(
@@ -85,13 +118,13 @@ class _HomePageState extends State<HomePage> {
           //   ),
           // ),
           const BottomNavigationBarItem(
-            label: "",
-            icon: Icon(
-              color: Colors.white,
-              size: 30,
-              Icons.task_alt_sharp,
-            ),
-          )
+              label: "Tasks",
+              icon: Icon(
+                color: Colors.white,
+                size: 30,
+                Icons.task_alt_sharp,
+              ),
+              backgroundColor: const Color(0xff251f71))
         ],
       ),
     );
