@@ -46,7 +46,8 @@ class _ExpandableTileState extends State<ExpandableTile> {
           },
           collapsedBackgroundColor:
               // !_isExpanded ? const Color(0xff251f71) : Colors.amber,
-              const Color(0xff251f71),
+              // const Color(0xff251f71),
+              Theme.of(context).colorScheme.primary,
           // tilePadding: EdgeInsets.all(0),
           backgroundColor: Colors.transparent,
           // _isExpanded ? Colors.transparent : const Color(0xff251f71),
